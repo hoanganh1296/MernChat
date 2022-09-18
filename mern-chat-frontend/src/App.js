@@ -36,7 +36,7 @@ function App() {
         setNewMessages,
       }}
     >
-      <Router>
+      <Router basename='/'>
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />

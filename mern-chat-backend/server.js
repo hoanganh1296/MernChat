@@ -8,6 +8,10 @@ const app = express();
 
 const rooms = ["general", "tech", "fiance", "crypto"];
 
+if(process.env.NODE_ENV !== "production"){
+  require("dotenv").config({path: __dirname+'/.env'});
+}
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -98,3 +102,12 @@ io.on("connection", (socket) => {
 server.listen(PORT, () => {
   console.log("listening on port", PORT);
 });
+
+
+// static files (build frontend)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend', 'build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'build', 'index.html'));
+  })
+}
