@@ -2,11 +2,11 @@
     "version": 2,
     "builds": [
       {
-        "src": "./mern-chat-backend/server.js",  
+        "src": "./server.js",  
         "use": "@vercel/node"
       },
       {
-        "src": "./mern-chat-frontend/build",    
+        "src": "./frontend/build",    
         "use": "@vercel/static"
       }
     ],
@@ -14,7 +14,7 @@
     "rewrites": [
       {
         "source": "/(.*)",
-        "destination": "/mern-chat-backend/server.js"
+        "destination": "/server.js"
       }
     ]
   }
