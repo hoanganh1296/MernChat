@@ -3,7 +3,6 @@ const cors = require("cors");
 const userRoutes = require("./routes/useRoutes");
 const Message = require("./models/Message");
 const User = require("./models/User");
-
 const app = express();
 
 const rooms = ["general", "tech", "fiance", "crypto"];
@@ -106,8 +105,8 @@ server.listen(PORT, () => {
 
 // static files (build frontend)
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../mern-chat-frontend', 'build')));
+  app.use(express.static(path.join(__dirname, '../mern-chat-frontend/build')));
   app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../mern-chat-frontend', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../mern-chat-frontend/build/index.html'));
   })
 }

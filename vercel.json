@@ -14,7 +14,7 @@
     "rewrites": [
       {
         "source": "/(.*)",
-        "destination": "/mern-chat-backend/server.js"
+        "dest": "/mern-chat-backend/server.js"
       }
     ]
   }
