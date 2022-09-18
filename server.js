@@ -4,6 +4,8 @@ const userRoutes = require("./routes/useRoutes");
 const Message = require("./models/Message");
 const User = require("./models/User");
 const app = express();
+require("dotenv").config();
+
 
 const rooms = ["general", "tech", "fiance", "crypto"];
 
@@ -102,7 +104,7 @@ server.listen(PORT, () => {
 // static files (build frontend)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, './frontend/build')));
-  app.get('*', (req, res) => {
+  app.get('*', (_, res) => {
     res.sendFile(path.join(__dirname, './frontend/build/index.html'));
   })
 }
