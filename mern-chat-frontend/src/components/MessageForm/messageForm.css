@@ -1,0 +1,80 @@
+.messages-output {
+  height: 80vh;
+  border: 1px solid lightgray;
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+.message-inner {
+  position: relative;
+  margin-left: 40px;
+  margin-bottom: 10px;
+  padding: 10px;
+  min-width: 200px;
+  max-width: 90%;
+  text-align: left;
+  min-height: 80px;
+  font: 400 1em Arial, sans-serif;
+  display: inline-block;
+  border-radius: 0 15px 15px 15px;
+  background-color: #d1e7dd;
+}
+
+.message-user-pic {
+  position: absolute;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+  /* margin-right: 10px; */
+}
+
+.message .message-user-pic {
+  left: -40px;
+}
+
+.incoming-message {
+  display: flex;
+  justify-content: flex-end;
+}
+.incoming-message .message-inner {
+  background-color: #ffdab9;
+  border-radius: 15px 0px 15px 15px;
+  margin-right: 40px;
+}
+
+.incoming-message .message-user-pic {
+  right: -40px;
+}
+
+.message-timestamp-left {
+  font-size: 0.85rem;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.message-sender {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.message-date-indicator {
+  width: 150px;
+  margin: 0 auto;
+}
+
+.conversation-info {
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.conversation-profile-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin: 10px auto;
+  border-radius: 50%;
+  margin-left: 10px;
+}
