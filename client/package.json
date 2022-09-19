@@ -20,11 +20,11 @@
     "redux-thunk": "^2.4.1",
     "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4",
-    "react-app-rewired": "^2.2.1"
-  },
-  "devDependencies": {
+    "react-app-rewired": "^2.2.1",
     "babel-plugin-module-resolver": "^4.1.0",
     "customize-cra": "^1.0.0"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "start": "react-app-rewired start",
