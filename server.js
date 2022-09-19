@@ -7,7 +7,6 @@ const User = require("./models/User");
 const app = express();
 require("dotenv").config();
 
-
 const rooms = ["general", "tech", "fiance", "crypto"];
 
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +17,7 @@ app.use(cors());
 app.use("/users", userRoutes);
 require("./connection");
 const server = require("http").createServer(app);
-const PORT = 5001;
+const PORT = process.env.PORT || 5000;
 const io = require("socket.io")(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -57,9 +56,9 @@ io.on("connection", (socket) => {
     io.emit("new-user", members);
   });
 
-  socket.on("join-room", async (newRoom,previousRoom) => {
+  socket.on("join-room", async (newRoom, previousRoom) => {
     socket.join(newRoom);
-    socket.leave(previousRoom)
+    socket.leave(previousRoom);
     let roomMessages = await getLastMessagesFormRoom(newRoom);
     roomMessages = sortRoomMessagesByDate(roomMessages);
     socket.emit("room-messages", roomMessages);
@@ -92,7 +91,7 @@ io.on("connection", (socket) => {
       res.status(200).send();
     } catch (err) {
       console.log(err);
-      res.status(400).send()
+      res.status(400).send();
     }
   });
 });
@@ -101,11 +100,12 @@ server.listen(PORT, () => {
   console.log("listening on port", PORT);
 });
 
-
 // static files (build frontend)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, './frontend/build')));
-  app.get('*', (_, res) => {
-    res.sendFile(path.join(__dirname, './frontend/build/index.html'));
-  })
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./frontend/build")));
+  app.get("*", (_, res) => {
+    res.sendFile(path.join(__dirname, "./frontend/build/index.html"));
+  });
 }
+
+module.exports = app;
